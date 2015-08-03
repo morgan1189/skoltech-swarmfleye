@@ -1,0 +1,10 @@
+ffmpeg -y -f v4l2 -r 30 -s 640x480 -i /dev/video4 http://192.168.1.39:8090/feed1.ffm
+
+# -y accept prompts automatically 
+# -f set video format (v4l2 for linux, takes feed from camera)
+# -r set frame-rate
+# -s set video resolution
+# -i define input device (/dev/video4 on red robot)
+# -http output destination (set for fresher on my mac)
+
+
