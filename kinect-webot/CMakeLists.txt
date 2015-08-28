@@ -1,0 +1,15 @@
+project(kinect-webot)
+cmake_minimum_required(VERSION 2.8)
+set( CMAKE_CXX_FLAGS "-std=c++11")
+set( CMAKE_BUILD_TYPE "Debug")
+aux_source_directory(. SRC_LIST)
+file(GLOB SRC_LIST *.cpp *.hpp)
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+
+FIND_PACKAGE(Boost COMPONENTS filesystem date_time system thread regex chrono)
+IF(Boost_FOUND)
+    MESSAGE("BOOST FOUND")
+    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+ENDIF()
+
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} /usr/local/lib/libvcored.so /usr/local/lib/libvunirobotd.so)
